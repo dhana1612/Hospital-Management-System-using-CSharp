@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +37,7 @@ namespace HMS
         public void UpdatePatient(int id, Patient updatedPatient)
         {
             var patient = GetPatientById(id);
+
             if (patient != null)
             {
                 patient.Name = updatedPatient.Name;
@@ -44,12 +45,7 @@ namespace HMS
                 patient.Illness = updatedPatient.Illness;
                 Console.WriteLine("\nPatient updated successfully!");
             }
-            else
-            {
-                Console.WriteLine("\nPatient not found!");
-            }
         }                   
-
         public void DeletePatient(int id)
         {
             var patient = GetPatientById(id);
@@ -60,7 +56,7 @@ namespace HMS
             }
             else
             {
-                Console.WriteLine("\nPatient not found!");
+                Console.WriteLine("\nPatient ID is not found!");
             }
         }
     }
