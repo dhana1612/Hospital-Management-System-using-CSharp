@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,18 +77,30 @@ namespace HMS
             Console.Write("Enter Patient ID to update: ");
             int id = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter New Name: ");
-            string name = Console.ReadLine();
+           var id_result = pr.GetPatientById(id);
 
-            Console.Write("Enter New Age: ");
-            int age = int.Parse(Console.ReadLine());
+            if(id_result != null)
+            {
+                Console.Write("Enter New Name: ");
+                string name = Console.ReadLine();
 
-            Console.Write("Enter New Illness: ");
-            string illness = Console.ReadLine();
+                Console.Write("Enter New Age: ");
+                int age = int.Parse(Console.ReadLine());
 
-            var updatedPatient = new Patient(id, name, age, illness);
-            pr.UpdatePatient(id, updatedPatient);
+                Console.Write("Enter New Illness: ");
+                string illness = Console.ReadLine();
+
+                var updatedPatient = new Patient(id, name, age, illness);
+                pr.UpdatePatient(id, updatedPatient);
+            }
+
+            else
+            {
+                Console.WriteLine("\nPatient id is not found!");
+            }
         }
+
+
 
         public void DeletePatient()
         {
